@@ -1,1 +1,6 @@
 D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.AssemblyReference.cache
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.SuggestedBindingRedirects.cache
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.MyForm.resources
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.GenerateResource.cache

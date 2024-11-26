@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\SVN\\Eleves\\Github\\C_MusicPlayer\\CMusicPlayer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CDCBAE4C-761B-4DCA-AFBA-D5A8225636BB}|CMusicPlayer\\CMusicPlayer.vcxproj|D:\\SVN\\Eleves\\Github\\C_MusicPlayer\\CMusicPlayer\\CMusicPlayer\\MyForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CDCBAE4C-761B-4DCA-AFBA-D5A8225636BB}|CMusicPlayer\\CMusicPlayer.vcxproj|solutionrelative:CMusicPlayer\\MyForm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CDCBAE4C-761B-4DCA-AFBA-D5A8225636BB}|CMusicPlayer\\CMusicPlayer.vcxproj|D:\\SVN\\Eleves\\Github\\C_MusicPlayer\\CMusicPlayer\\CMusicPlayer\\MyForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CDCBAE4C-761B-4DCA-AFBA-D5A8225636BB}|CMusicPlayer\\CMusicPlayer.vcxproj|solutionrelative:CMusicPlayer\\MyForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -23,19 +27,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MyForm.h",
+              "DocumentMoniker": "D:\\SVN\\Eleves\\Github\\C_MusicPlayer\\CMusicPlayer\\CMusicPlayer\\MyForm.h",
+              "RelativeDocumentMoniker": "CMusicPlayer\\MyForm.h",
+              "ToolTip": "D:\\SVN\\Eleves\\Github\\C_MusicPlayer\\CMusicPlayer\\CMusicPlayer\\MyForm.h",
+              "RelativeToolTip": "CMusicPlayer\\MyForm.h",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAJEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-26T10:53:33.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MyForm.cpp",
               "DocumentMoniker": "D:\\SVN\\Eleves\\Github\\C_MusicPlayer\\CMusicPlayer\\CMusicPlayer\\MyForm.cpp",
               "RelativeDocumentMoniker": "CMusicPlayer\\MyForm.cpp",
               "ToolTip": "D:\\SVN\\Eleves\\Github\\C_MusicPlayer\\CMusicPlayer\\CMusicPlayer\\MyForm.cpp",
               "RelativeToolTip": "CMusicPlayer\\MyForm.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-26T09:58:16.77Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MyForm.h [Design]",
               "DocumentMoniker": "D:\\SVN\\Eleves\\Github\\C_MusicPlayer\\CMusicPlayer\\CMusicPlayer\\MyForm.h",
               "RelativeDocumentMoniker": "CMusicPlayer\\MyForm.h",
