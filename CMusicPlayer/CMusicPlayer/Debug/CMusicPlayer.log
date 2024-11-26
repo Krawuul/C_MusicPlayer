@@ -1,19 +1,49 @@
-﻿  MyForm.cpp
+﻿  aldlist.cpp
 C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll : warning C4945: 'SemaphoreFullException': cannot import symbol from 'C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll': as 'System::Threading::SemaphoreFullException' has already been imported from another assembly 'C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll'
-  (compiling source file 'MyForm.cpp')
+  (compiling source file 'framework/Win32/aldlist.cpp')
       C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll(0,1):
       first seen type is used; re-order imported assemblies to use the current type
       C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll(0,1):
       This diagnostic occurred while importing type 'System.Threading.SemaphoreFullException' from assembly 'System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.
   
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\framework\Win32\aldlist.cpp(42,19): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\framework\Win32\aldlist.cpp(133,41): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\framework\Win32\aldlist.cpp(138,19): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+  CWaves.cpp
 C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll : warning C4945: 'SemaphoreFullException': cannot import symbol from 'C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll': as 'System::Threading::SemaphoreFullException' has already been imported from another assembly 'C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll'
-  (compiling source file 'Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp')
+  (compiling source file 'framework/Win32/CWaves.cpp')
+      C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll(0,1):
+      first seen type is used; re-order imported assemblies to use the current type
+      C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll(0,1):
+      This diagnostic occurred while importing type 'System.Threading.SemaphoreFullException' from assembly 'System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.
+  
+  Framework.cpp
+C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll : warning C4945: 'SemaphoreFullException': cannot import symbol from 'C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll': as 'System::Threading::SemaphoreFullException' has already been imported from another assembly 'C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll'
+  (compiling source file 'framework/Win32/Framework.cpp')
+      C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll(0,1):
+      first seen type is used; re-order imported assemblies to use the current type
+      C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll(0,1):
+      This diagnostic occurred while importing type 'System.Threading.SemaphoreFullException' from assembly 'System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.
+  
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\framework\Win32\Framework.cpp(210,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  LoadOAL.cpp
+C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll : warning C4945: 'SemaphoreFullException': cannot import symbol from 'C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll': as 'System::Threading::SemaphoreFullException' has already been imported from another assembly 'C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll'
+  (compiling source file 'framework/Win32/LoadOAL.cpp')
       C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll(0,1):
       first seen type is used; re-order imported assemblies to use the current type
       C:\Windows\assembly\GAC_MSIL\System\2.0.0.0__b77a5c561934e089\System.dll(0,1):
       This diagnostic occurred while importing type 'System.Threading.SemaphoreFullException' from assembly 'System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.
   
   Generating Code...
-  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\framework\Win32\Framework.cpp(200): warning C4793: 'ALFWprintf': function compiled as native:
+  	varargs not supported under /clr
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\framework\Win32\Framework.cpp(202): warning C4793: 'ALFWprintf': function compiled as native:
+  	Found an intrinsic not supported in managed code
+D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\framework\Win32\Framework.cpp(204): warning C4793: 'ALFWprintf': function compiled as native:
+  	Found an intrinsic not supported in managed code
+  aldlist.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+Framework.obj : warning LNK4248: unresolved typeref token (0100001C) for 'ALCdevice_struct'; image may not run
+aldlist.obj : warning LNK4248: unresolved typeref token (0100001B) for 'ALCdevice_struct'; image may not run
+Framework.obj : warning LNK4248: unresolved typeref token (0100001B) for 'ALCcontext_struct'; image may not run
+aldlist.obj : warning LNK4248: unresolved typeref token (0100001C) for 'ALCcontext_struct'; image may not run
   CMusicPlayer.vcxproj -> D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe
