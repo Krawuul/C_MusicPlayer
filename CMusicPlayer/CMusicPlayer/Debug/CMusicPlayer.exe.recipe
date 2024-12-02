@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe</FullPath>
+      <FullPath>C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config</FullPath>
+      <FullPath>C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

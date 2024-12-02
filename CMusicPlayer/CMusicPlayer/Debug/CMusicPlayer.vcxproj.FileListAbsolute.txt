@@ -4,3 +4,10 @@ D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.
 D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
 D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.MyForm.resources
 D:\SVN\Eleves\Github\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.GenerateResource.cache
+C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
+C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.AssemblyReference.cache
+C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
+C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.MyForm.resources
+C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.GenerateResource.cache
+C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.CopyComplete
