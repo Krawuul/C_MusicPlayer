@@ -11,3 +11,10 @@ C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\C
 C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.MyForm.resources
 C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.GenerateResource.cache
 C:\Users\Maxime\Documents\GitHub\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.CopyComplete
+D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
+D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.AssemblyReference.cache
+D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.SuggestedBindingRedirects.cache
+D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
+D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.MyForm.resources
+D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.GenerateResource.cache
+D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPl.DDAA753C.Up2Date

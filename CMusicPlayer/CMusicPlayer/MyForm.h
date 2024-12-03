@@ -1,18 +1,11 @@
 #pragma once
 
 #include "../framework/Win32/Framework.h"
-#include "al.h"
-#include "alc.h"
-#include "vorbis/vorbisfile.h"
-#include "vorbis/codec.h"
-#include <chrono>
-#include <thread>
+#include "MusicPlayer.h"
 
 
-#define AUDIO_PATH "..\\Sounds\\Ruisseau_Escattes_01.wav"
-#define AUDIO_PATH2 "..\\Sounds\\Pouet.ogg"
-#define BUFFER_SIZE 4096
-#define NUM_BUFFERS 3
+
+
 
 namespace CMusicPlayer {
 
@@ -38,11 +31,25 @@ namespace CMusicPlayer {
 		}
 
 	public:
-		ALuint* uiBuffer;
-		ALuint* uiSource;
-		ALint* iState;
-		
+
+		MusicPlayer mp;
+		int songId = 0;
 	private: System::Windows::Forms::Button^ Pause;
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::HScrollBar^ hScrollBar1;
+	private: System::Windows::Forms::ListView^ listView1;
+	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
+	private: System::Windows::Forms::Button^ Add;
+	private: System::Windows::Forms::Button^ Save;
+	private: System::Windows::Forms::Button^ Load;
+	private: System::Windows::Forms::RichTextBox^ richTextBox1;
+	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button4;
+
+
 	public:
 
 	public:
@@ -57,18 +64,13 @@ namespace CMusicPlayer {
 		{
 			if (components)
 			{
-
-
-
-				delete iState;
-
-				iState = nullptr;
 				delete components;
 			}
 		}
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
 	private: System::Windows::Forms::Button^ playButton;
 	private: System::Windows::Forms::Button^ stopButton;
+	private: System::ComponentModel::IContainer^ components;
 
 
 	protected:
@@ -83,7 +85,7 @@ namespace CMusicPlayer {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -92,29 +94,25 @@ namespace CMusicPlayer {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			if (uiBuffer == nullptr) {
-				uiBuffer = new ALuint();
-			}
-			if (uiSource == nullptr) {
-				uiSource = new ALuint();
-			}
-			if (iState == nullptr) {
-				iState = new ALint();
-			}
-			ALFWInit();
-
-			if (!ALFWInitOpenAL())
-			{
-				ALFWprintf("ALFW not initialized!");
-				ALFWShutdown();
-				return;
-			}
-
+			this->components = (gcnew System::ComponentModel::Container());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->playButton = (gcnew System::Windows::Forms::Button());
 			this->stopButton = (gcnew System::Windows::Forms::Button());
 			this->Pause = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->hScrollBar1 = (gcnew System::Windows::Forms::HScrollBar());
+			this->listView1 = (gcnew System::Windows::Forms::ListView());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->Add = (gcnew System::Windows::Forms::Button());
+			this->Save = (gcnew System::Windows::Forms::Button());
+			this->Load = (gcnew System::Windows::Forms::Button());
+			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->flowLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -171,180 +169,267 @@ namespace CMusicPlayer {
 			this->button2->Text = L"button2";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
+			// timer1
+			// 
+			this->timer1->Enabled = true;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
+			// 
+			// hScrollBar1
+			// 
+			this->hScrollBar1->LargeChange = 1;
+			this->hScrollBar1->Location = System::Drawing::Point(3, 199);
+			this->hScrollBar1->Maximum = 10;
+			this->hScrollBar1->Name = L"hScrollBar1";
+			this->hScrollBar1->Size = System::Drawing::Size(272, 17);
+			this->hScrollBar1->TabIndex = 1;
+			this->hScrollBar1->Value = 5;
+			this->hScrollBar1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::hScrollBar1_Scroll);
+			// 
+			// listView1
+			// 
+			this->listView1->HideSelection = false;
+			this->listView1->Location = System::Drawing::Point(84, 12);
+			this->listView1->Name = L"listView1";
+			this->listView1->Size = System::Drawing::Size(156, 162);
+			this->listView1->TabIndex = 2;
+			this->listView1->UseCompatibleStateImageBehavior = false;
+			this->listView1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listView1_SelectedIndexChanged);
+			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
+			// Add
+			// 
+			this->Add->Location = System::Drawing::Point(3, 12);
+			this->Add->Name = L"Add";
+			this->Add->Size = System::Drawing::Size(75, 23);
+			this->Add->TabIndex = 3;
+			this->Add->Text = L"Add";
+			this->Add->UseVisualStyleBackColor = true;
+			this->Add->Click += gcnew System::EventHandler(this, &MyForm::Add_Click);
+			// 
+			// Save
+			// 
+			this->Save->Location = System::Drawing::Point(3, 41);
+			this->Save->Name = L"Save";
+			this->Save->Size = System::Drawing::Size(75, 23);
+			this->Save->TabIndex = 4;
+			this->Save->Text = L"Save";
+			this->Save->UseVisualStyleBackColor = true;
+			this->Save->Click += gcnew System::EventHandler(this, &MyForm::Save_Click);
+			// 
+			// Load
+			// 
+			this->Load->Location = System::Drawing::Point(3, 70);
+			this->Load->Name = L"Load";
+			this->Load->Size = System::Drawing::Size(75, 23);
+			this->Load->TabIndex = 5;
+			this->Load->Text = L"Load";
+			this->Load->UseVisualStyleBackColor = true;
+			this->Load->Click += gcnew System::EventHandler(this, &MyForm::Load_Click);
+			// 
+			// richTextBox1
+			// 
+			this->richTextBox1->Enabled = false;
+			this->richTextBox1->Location = System::Drawing::Point(84, 12);
+			this->richTextBox1->Name = L"richTextBox1";
+			this->richTextBox1->Size = System::Drawing::Size(156, 171);
+			this->richTextBox1->TabIndex = 6;
+			this->richTextBox1->Text = L"";
+			// 
+			// saveFileDialog1
+			// 
+			this->saveFileDialog1->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &MyForm::saveFileDialog1_FileOk);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(117, 186);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(42, 13);
+			this->label1->TabIndex = 7;
+			this->label1->Text = L"Volume";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(3, 127);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 8;
+			this->button1->Text = L"Previous";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(3, 156);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->TabIndex = 9;
+			this->button3->Text = L"Next";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
+			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(3, 98);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->TabIndex = 10;
+			this->button4->Text = L"Clear";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->richTextBox1);
+			this->Controls->Add(this->Load);
+			this->Controls->Add(this->Save);
+			this->Controls->Add(this->Add);
+			this->Controls->Add(this->listView1);
+			this->Controls->Add(this->hScrollBar1);
 			this->Controls->Add(this->flowLayoutPanel1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->flowLayoutPanel1->ResumeLayout(false);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 
-	private: void PlayWav()
-	{
-		if ((*iState != AL_PLAYING) && (*iState != AL_PAUSED))
-		{
 
 
-			alGenBuffers(1, uiBuffer);
-
-			if (!ALFWLoadWaveToBuffer((char*)AUDIO_PATH, *uiBuffer))
-			{
-				ALFWprintf("Sound not found! at : %s", AUDIO_PATH);
-			}
-
-			alGenSources(1, uiSource);
-
-			alSourcei(*uiSource, AL_BUFFER, *uiBuffer);
-
-			alSourcePlay(*uiSource);
-			ALFWprintf("Playing source!");
-
-
-			this->Pause->Text = L"PAUSE";
-		}
-	}
-	private:	   
-	bool StreamOggData(ALuint source, ALuint buffers[], OggVorbis_File* oggFile,ALenum format,ALsizei freq)
-	{
-		char pcm[BUFFER_SIZE];
-		int bitstream;
-		long bytes;
-
-		for (int i = 0; i < NUM_BUFFERS; i++)
-		{
-			int bitstream =0;
-			bytes = ov_read(oggFile, pcm, BUFFER_SIZE, 0, 2, 1, &bitstream);
-			if (bytes > 0)
-			{
-				alBufferData(buffers[i], format, pcm, bytes, freq);
-				alSourceQueueBuffers(source, 1, &buffers[i]);
-			}
-			else if (bytes == 0)
-			{
-				// Fin du fichier
-				return true;
-			}
-			else
-			{
-				
-				return false;
-			}
-		}
-		ov_clear(oggFile);
-		return true;
-	}
-	private:void PlayOggFile(const char* filename)
-	{
-		//ALCdevice* device = alcOpenDevice(nullptr); // Ouvrir le périphérique audio
-		//ALCcontext* context = alcCreateContext(device, nullptr);
-		//alcMakeContextCurrent(context);
-
-		
-		ALuint buffers[NUM_BUFFERS];
-		alGenSources(1, uiSource);
-		alGenBuffers(NUM_BUFFERS, buffers);
-
-		OggVorbis_File oggFile;
-		if (ov_fopen(filename, &oggFile) != 0)
-		{
-			
-			return;
-		}
-		vorbis_info* vi = ov_info(&oggFile, -1);
-		ALenum format = (vi->channels == 1) ? AL_FORMAT_MONO16 : AL_FORMAT_STEREO16;
-		ALsizei freq = vi->rate;
-
-		// Charger les premiers buffers
-		if (!StreamOggData(*uiSource, buffers, &oggFile,format,freq))
-		{
-			return;
-		}
-
-		alSourcePlay(*uiSource);
-
-		// Streaming continu
-		
-		while (true) {
-			ALint processed = 0;
-			alGetSourcei(*uiSource, AL_BUFFERS_PROCESSED, &processed);
-
-			while (processed--) {
-				ALuint buffer;
-				alSourceUnqueueBuffers(*uiSource, 1, &buffer);
-
-				// Lire de nouvelles données pour le buffer
-				StreamOggData(*uiSource, buffers, &oggFile, format, freq);
-
-				alSourceQueueBuffers(*uiSource, 1, &buffer);
-			}
-
-			// Vérifier l'état de la source
-			ALint state;
-			alGetSourcei(*uiSource, AL_SOURCE_STATE, &state);
-			if (state != AL_PLAYING) {
-				alSourcePlay(*uiSource);  // Relancer si la source s'est arrêtée
-			}
-
-			// Pause pour éviter une boucle infinie trop rapide
-			std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		}
-
-		// Nettoyage
-		alSourceStop(*uiSource);
-		alDeleteSources(1, uiSource);
-		alDeleteBuffers(NUM_BUFFERS, buffers);
-
-	
-	}
 
 	private: System::Void stopButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (uiSource == nullptr) return;
-		if (uiBuffer == nullptr) return;
-
-		alGetSourcei(*uiSource, AL_SOURCE_STATE, iState);
-
-		if ((*iState == AL_PLAYING) || (*iState == AL_PAUSED) || (*iState == AL_INITIAL))
-		{
-
-			alSourceStop(*uiSource);
-			alGetSourcei(*uiSource, AL_SOURCE_STATE, iState);
-			alDeleteSources(1, uiSource);
-			alDeleteBuffers(1, uiBuffer);
-
-		}
+		mp.Stop();
 	}
 	private: System::Void playButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		PlayOggFile(AUDIO_PATH2);
 
-
+		mp.Stop();
+		Play();
 
 	}
 
-	private: System::Void Pause_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (uiSource == nullptr) return;
-		if (uiBuffer == nullptr) return;
-
-		alGetSourcei(*uiSource, AL_SOURCE_STATE, iState);
-		if (*iState == AL_PAUSED)
+	private: System::Void Pause_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		mp.Pause();
+		if (this->Pause->Text == L"PAUSE")
 		{
-			alSourcePlay(*uiSource);
-			this->Pause->Text = L"PAUSE";
-
-		}
-		else if (*iState == AL_PLAYING)
-		{
-			alSourcePause(*uiSource);
 			this->Pause->Text = L"RESUME";
 		}
+		else
+		{
+			this->Pause->Text = L"PAUSE";
+		}
 	}
 
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e)
+	{
+		mp.UpdateOgg();
+	}
+	private: System::Void hScrollBar1_Scroll(System::Object^ sender, System::Windows::Forms::ScrollEventArgs^ e)
+	{
+		mp.ChangeVolume(this->hScrollBar1->Value / 10.f);
+	}
+	private: System::Void Add_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+
+		System::IO::Stream^ myStream;
+		openFileDialog1 = gcnew OpenFileDialog;
+
+		openFileDialog1->InitialDirectory = "c:\\";
+		openFileDialog1->Filter = "audio files (*.wav)|*.wav|audio files (*.ogg)|*.ogg";
+		openFileDialog1->FilterIndex = 2;
+		openFileDialog1->RestoreDirectory = true;
+
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			if ((myStream = openFileDialog1->OpenFile()) != nullptr)
+			{
+				richTextBox1->AppendText(openFileDialog1->FileName + "\n");
+				// Insert code to read the stream here.
+				myStream->Close();
+			}
+		}
+	}
+
+	private:
+		void Play()
+		{
+			if (richTextBox1->Lines->Length > 0)
+			{
+				String^ filename = richTextBox1->Lines[songId];
+
+				if (filename->Contains(".wav"))
+				{
+					mp.PlayWav(MusicPlayer::ManagedStringToStdString(filename));
+				}
+				else
+				{
+					mp.PlayOggFile(MusicPlayer::ManagedStringToStdString(filename));
+				}
+				this->Pause->Text = L"PAUSE";
+			}
+		}
+	private: System::Void Save_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::IO::Stream^ myStream;
+		SaveFileDialog^ saveFileDialog1 = gcnew SaveFileDialog;
+		saveFileDialog1->Filter = "txt files (*.txt)|*.txt";
+		saveFileDialog1->FilterIndex = 1;
+		saveFileDialog1->RestoreDirectory = true;
+		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+
+			richTextBox1->SaveFile(saveFileDialog1->FileName);
+		}
+	}
+	private: System::Void Load_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		System::IO::Stream^ myStream;
+		openFileDialog1 = gcnew OpenFileDialog;
+
+		openFileDialog1->InitialDirectory = "c:\\";
+		openFileDialog1->Filter = "text file (*.txt)|*.txt";
+		openFileDialog1->FilterIndex = 1;
+		openFileDialog1->RestoreDirectory = true;
+
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+
+			richTextBox1->LoadFile(openFileDialog1->FileName);
+			// Insert code to read the stream here.
+
+		}
+	}
+	private: System::Void listView1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void saveFileDialog1_FileOk(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		songId = (songId - 1 + richTextBox1->Lines->Length -1) % (richTextBox1->Lines->Length -1);
+		mp.Stop();
+		Play();
+	}
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		songId = (songId + 1) % (richTextBox1->Lines->Length -1);
+		mp.Stop();
+		Play();
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		richTextBox1->Text = "";
+		songId = 0;
+	}
 	};
 }
