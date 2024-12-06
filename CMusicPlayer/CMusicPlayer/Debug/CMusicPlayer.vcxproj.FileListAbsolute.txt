@@ -18,3 +18,10 @@ D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\
 D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.MyForm.resources
 D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.GenerateResource.cache
 D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPl.DDAA753C.Up2Date
+D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
+D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.AssemblyReference.cache
+D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.SuggestedBindingRedirects.cache
+D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config
+D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.MyForm.resources
+D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.GenerateResource.cache
+D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.vcxproj.CopyComplete

@@ -4,9 +4,6 @@
 #include "MusicPlayer.h"
 
 
-
-
-
 namespace CMusicPlayer {
 
 	using namespace System;
@@ -182,7 +179,7 @@ namespace CMusicPlayer {
 			this->hScrollBar1->Name = L"hScrollBar1";
 			this->hScrollBar1->Size = System::Drawing::Size(272, 17);
 			this->hScrollBar1->TabIndex = 1;
-			this->hScrollBar1->Value = 5;
+			this->hScrollBar1->Value = 2;
 			this->hScrollBar1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::hScrollBar1_Scroll);
 			// 
 			// listView1
@@ -303,10 +300,18 @@ namespace CMusicPlayer {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			mp.ChangeVolume(this->hScrollBar1->Value / 10.f);
 		}
 #pragma endregion
 
-
+	public: System::Void UpdateSoundTextBox()
+	{
+		for (size_t i = 0; i < mp.GetSoundBank().GetSounds().size(); i++)
+		{
+			String^ filename = gcnew String(mp.GetSoundBank().GetSounds()[i].name.data());
+			richTextBox1->AppendText(filename + "\n");
+		}
+	}
 
 
 	private: System::Void stopButton_Click(System::Object^ sender, System::EventArgs^ e)
@@ -357,7 +362,15 @@ namespace CMusicPlayer {
 		{
 			if ((myStream = openFileDialog1->OpenFile()) != nullptr)
 			{
-				richTextBox1->AppendText(openFileDialog1->FileName + "\n");
+				std::string path = MusicPlayer::ManagedStringToStdString(openFileDialog1->FileName);
+				std::string name = MusicPlayer::ManagedStringToStdString(openFileDialog1->SafeFileName);
+				String^ filename = openFileDialog1->FileName;
+				FILE_EXTENSION ext;
+				filename->Contains(".wav") ? ext = WAW : ext = OGG;
+				SoundData dt = SoundData(path, name, ext);
+				mp.GetSoundBank().AddSound(dt);
+
+				richTextBox1->AppendText(openFileDialog1->SafeFileName + "\n");
 				// Insert code to read the stream here.
 				myStream->Close();
 			}
@@ -369,15 +382,15 @@ namespace CMusicPlayer {
 		{
 			if (richTextBox1->Lines->Length > 0)
 			{
-				String^ filename = richTextBox1->Lines[songId];
+				const SoundData& sound = mp.GetSoundBank().GetCurrentSound();
 
-				if (filename->Contains(".wav"))
+				if (sound.extension == WAW)
 				{
-					mp.PlayWav(MusicPlayer::ManagedStringToStdString(filename));
+					mp.PlayWav(sound.path);
 				}
 				else
 				{
-					mp.PlayOggFile(MusicPlayer::ManagedStringToStdString(filename));
+					mp.PlayOggFile(sound.path);
 				}
 				this->Pause->Text = L"PAUSE";
 			}
@@ -390,8 +403,7 @@ namespace CMusicPlayer {
 		saveFileDialog1->RestoreDirectory = true;
 		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
-
-			richTextBox1->SaveFile(saveFileDialog1->FileName);
+			mp.GetSoundBank().SaveBank(MusicPlayer::ManagedStringToStdString(saveFileDialog1->FileName));
 		}
 	}
 	private: System::Void Load_Click(System::Object^ sender, System::EventArgs^ e)
@@ -399,17 +411,20 @@ namespace CMusicPlayer {
 		System::IO::Stream^ myStream;
 		openFileDialog1 = gcnew OpenFileDialog;
 
-		openFileDialog1->InitialDirectory = "c:\\";
+		openFileDialog1->InitialDirectory = "../Save";
 		openFileDialog1->Filter = "text file (*.txt)|*.txt";
 		openFileDialog1->FilterIndex = 1;
 		openFileDialog1->RestoreDirectory = true;
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
+			mp.GetSoundBank().LoadBank(MusicPlayer::ManagedStringToStdString(openFileDialog1->FileName));
 
-			richTextBox1->LoadFile(openFileDialog1->FileName);
-			// Insert code to read the stream here.
-
+			for (size_t i = 0; i < mp.GetSoundBank().GetSounds().size(); i++)
+			{
+				String^ filename = gcnew String(mp.GetSoundBank().GetSounds()[i].name.data());
+				richTextBox1->AppendText(filename + "\n");
+			}
 		}
 	}
 	private: System::Void listView1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -418,12 +433,14 @@ namespace CMusicPlayer {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		songId = (songId - 1 + richTextBox1->Lines->Length -1) % (richTextBox1->Lines->Length -1);
+		//songId = (songId - 1 + richTextBox1->Lines->Length -1) % (richTextBox1->Lines->Length -1);
+		mp.GetSoundBank().Previous();
 		mp.Stop();
 		Play();
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		songId = (songId + 1) % (richTextBox1->Lines->Length -1);
+		//songId = (songId + 1) % (richTextBox1->Lines->Length -1);
+		mp.GetSoundBank().Next();
 		mp.Stop();
 		Play();
 	}

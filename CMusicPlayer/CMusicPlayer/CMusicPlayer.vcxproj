@@ -134,6 +134,7 @@
     <ClCompile Include="framework\Win32\LoadOAL.cpp" />
     <ClCompile Include="MusicPlayer.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="SoundBank.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\Win32\aldlist.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SoundBank.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">

@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe</FullPath>
+      <FullPath>D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Github\ProtoAutoChessGit\Other\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config</FullPath>
+      <FullPath>D:\GitHub\C++\C_MusicPlayer\CMusicPlayer\CMusicPlayer\Debug\CMusicPlayer.exe.config</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

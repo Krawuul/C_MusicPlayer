@@ -9,7 +9,7 @@
 #include <vector>
 #include <Framework.h>
 #include <string>
-
+#include "SoundBank.h"
 
 
 #define AUDIO_PATH "..\\Sounds\\Ruisseau_Escattes_01.wav"
@@ -39,6 +39,9 @@ public:
 		if (iState == nullptr) {
 			iState = new ALint();
 		}
+
+		soundBank = new SoundBank();
+		soundBank->OnStartLoad();
 	}
 private:
 	ALuint* uiBuffer;
@@ -51,14 +54,15 @@ private:
 	bool canPlay = false;
 	bool isOgg = false;
 	ALuint* buffers;
-	
+	SoundBank* soundBank;
 
-public: void PlayWav(std::string filepath)
+public: void PlayWav(const std::string& filepath)
 {
 	if ((*iState != AL_PLAYING) && (*iState != AL_PAUSED))
 	{
 		isOgg = false;
-
+		*iState = AL_PLAYING;
+		
 		alGenBuffers(1, uiBuffer);
 
 		if (!ALFWLoadWaveToBuffer(filepath.c_str(), *uiBuffer))
@@ -141,7 +145,7 @@ public:
 		if (TotalRead > 0)
 			alBufferData(Buffer, Format, &Samples[0], TotalRead, SampleRate);
 	}
-public:void PlayOggFile(std::string filename)
+public:void PlayOggFile(const std::string& filename)
 {
 	
 	isOgg = true;
@@ -269,7 +273,7 @@ public:void Stop()
 		}
 
 
-
+		*iState = AL_STOPPED;
 		canPlay = false;
 		isOgg = false;
 
@@ -296,5 +300,7 @@ public: bool Pause()
 	}
 	return false;
 }
+
+	  public: SoundBank& GetSoundBank() { return *soundBank; }
 };
 

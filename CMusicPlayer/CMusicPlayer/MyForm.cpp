@@ -7,5 +7,6 @@ void Main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	CMusicPlayer::MyForm form;
+	form.UpdateSoundTextBox();
 	Application::Run(% form);
 }
